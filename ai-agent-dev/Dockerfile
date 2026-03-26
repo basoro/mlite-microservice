@@ -10,14 +10,14 @@ RUN apt-get update && apt-get install -y \
 # Setup working directory aplikasi
 WORKDIR /app
 
-# Copy package.json dan install dependency
-COPY package*.json ./
+# COPY package.json dari direktori ai-agent-dev
+COPY ai-agent-dev/package*.json ./
 RUN npm install --production
 
-# Copy seluruh source code bot
-COPY . .
+# COPY seluruh source code bot dari direktori ai-agent-dev
+COPY ai-agent-dev/ .
 
-# Buat direktori data untuk persistent storage (repo mlite dll)
+# Buat direktori data untuk persistent storage
 RUN mkdir -p /data/mlite
 VOLUME ["/data"]
 
