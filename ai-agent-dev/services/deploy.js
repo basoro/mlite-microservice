@@ -7,8 +7,8 @@ module.exports = {
     }
     
     // In actual implementation, send a request to Papuyu PaaS webhook
-    const _url = \`\${process.env.PAPUYU_URL}/deploy?target=\${target}\`;
-    console.log(\`[Deploy] Triggering deploy webhook to \${_url}...\`);
+    const _url = `${process.env.PAPUYU_URL}/deploy?target=${target}`;
+    console.log(`[Deploy] Triggering deploy webhook to ${_url}...`);
     
     try {
       await axios.post(_url, {}, { timeout: 10000 });
