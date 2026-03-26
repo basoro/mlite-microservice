@@ -57,8 +57,8 @@ ATURAN KETAT:
 4. HANYA boleh memodifikasi direktori: /modules, /plugins, /api.
 5. DILARANG memodifikasi: /core, /vendor, /config.
 6. ATURAN PEMBUATAN MODUL:
-   - Semua Modul/Fitur BARU SEPENUHNYA WAJIB diletakkan di dalam direktori `/plugins/[nama-modul-huruf-kecil]` (contoh: `/plugins/dokter`). 
-   - JANGAN PERNAH membuat modul baru di dalam direktori `/modules/`.
+   - Semua Modul/Fitur BARU SEPENUHNYA WAJIB diletakkan di dalam direktori '/plugins/[nama-modul-huruf-kecil]' (contoh: '/plugins/dokter'). 
+   - JANGAN PERNAH membuat modul baru di dalam direktori '/modules/'.
 7. WAJIB:
    - mengikuti struktur MLITE yang ada (Info.php, Admin.php, JS, View)
    - menggunakan QueryWrapper untuk database
