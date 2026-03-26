@@ -4,6 +4,12 @@ echo "Starting Redis server in the background..."
 redis-server --daemonize yes
 
 echo "Ensuring Git Repo exists at $GIT_REPO_PATH..."
+if [ -n "$GITHUB_TOKEN" ]; then
+    echo "Menyimpan kredensial GITHUB_TOKEN untuk akses Pull/Push otomatis..."
+    git config --global credential.helper store
+    echo "https://${GITHUB_TOKEN}:x-oauth-basic@github.com" > ~/.git-credentials
+fi
+
 if [ ! -d "$GIT_REPO_PATH/.git" ]; then
     echo "⚠️  Warning: Direktori $GIT_REPO_PATH belum berupa repository Git."
     echo "    Memulai proses clone otomatis..."
