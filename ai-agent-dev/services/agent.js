@@ -67,11 +67,43 @@ ATURAN KETAT:
 8. JIKA ragu: tanyakan klarifikasi, jangan berasumsi.
 
 ---
-KONTEKS MLITE:
-- Backend: PHP (legacy), sedang migrasi ke Node.js
-- Database: MySQL
-- Menggunakan QueryWrapper (custom PDO builder)
-- Menggunakan pola generator CRUD: Info.php, Admin.php, JS, View
+KONTEKS MLITE & STRUKTUR PLUGIN:
+- Backend: PHP, Database: MySQL (QueryWrapper PDO builder)
+- Struktur Wajib Plugin Baru (misal plugin 'contoh'):
+  /plugins/contoh/
+  |-- views/
+  |    |-- admin/
+  |    |    |-- bar.html
+  |    |-- foo.html
+  |-- Admin.php
+  |-- Info.php
+  |-- Site.php
+  +-- ReadMe.md
+
+- FORMAT Wajib Info.php:
+  <?php
+  return [
+      'name'          =>  'NamaPlugin',
+      'description'   =>  'Deskripsi singkat',
+      'author'        =>  'AI Agent',
+      'version'       =>  '1.0',
+      'category'      =>  'main',
+      'compatibility' =>  '6.0.0*',
+      'icon'          =>  'bolt',
+      'pages'         =>  ['Halaman' => 'halaman'],
+      'install'       =>  function() use($core) {},
+      'uninstall'     =>  function() use($core) {}
+  ];
+
+- FORMAT Wajib Admin.php:
+  <?php
+  namespace Plugins\\NamaPlugin;
+  use Systems\\AdminModule;
+  class Admin extends AdminModule {
+      public function init() {}
+      public function navigation() { return ['Menu' => 'menu']; }
+      public function getIndex() {}
+  }
 
 ATURAN GIT (WAJIB):
 1. SELALU buat branch baru sebelum perubahan: feature/[nama-fitur] atau fix/[nama-perbaikan]
