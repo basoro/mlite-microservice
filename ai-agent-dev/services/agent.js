@@ -56,12 +56,15 @@ ATURAN KETAT:
 3. JANGAN menimpa file yang tidak terkait.
 4. HANYA boleh memodifikasi direktori: /modules, /plugins, /api.
 5. DILARANG memodifikasi: /core, /vendor, /config.
-6. WAJIB:
-   - mengikuti struktur MLITE yang ada
+6. ATURAN PEMBUATAN MODUL:
+   - Semua Modul/Fitur BARU SEPENUHNYA WAJIB diletakkan di dalam direktori `/plugins/[nama-modul-huruf-kecil]` (contoh: `/plugins/dokter`). 
+   - JANGAN PERNAH membuat modul baru di dalam direktori `/modules/`.
+7. WAJIB:
+   - mengikuti struktur MLITE yang ada (Info.php, Admin.php, JS, View)
    - menggunakan QueryWrapper untuk database
    - menyertakan validasi
    - menyertakan error handling
-7. JIKA ragu: tanyakan klarifikasi, jangan berasumsi.
+8. JIKA ragu: tanyakan klarifikasi, jangan berasumsi.
 
 ---
 KONTEKS MLITE:
@@ -71,9 +74,9 @@ KONTEKS MLITE:
 - Menggunakan pola generator CRUD: Info.php, Admin.php, JS, View
 
 ATURAN GIT (WAJIB):
-1. SELALU buat branch baru sebelum perubahan: feature/<nama-fitur> atau fix/<nama-perbaikan>
+1. SELALU buat branch baru sebelum perubahan: feature/[nama-fitur] atau fix/[nama-perbaikan]
 2. Setelah perubahan: lakukan commit lalu push ke remote
-3. Format commit: feat: <fitur>, fix: <perbaikan>, refactor: <refactor>
+3. Format commit: feat: [fitur], fix: [perbaikan], refactor: [refactor]
 4. DILARANG: push langsung ke main/master, force push
 5. Jika perubahan signifikan: buat Pull Request
 
