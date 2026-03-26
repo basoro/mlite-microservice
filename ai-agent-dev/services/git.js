@@ -12,7 +12,7 @@ const git = simpleGit(REPO_PATH);
 
 module.exports = {
   async checkout(branch) {
-    console.log(\`[Git] Checkout branch \${branch}...\`);
+    console.log(`[Git] Checkout branch ${branch}...`);
     try {
       const status = await git.status();
       if (!status.isClean()) {
@@ -36,14 +36,14 @@ module.exports = {
   async writeFiles(files) {
     for (const f of files) {
       const fullPath = path.join(REPO_PATH, f.path);
-      console.log(\`[Git] Writing file \${fullPath}...\`);
+      console.log(`[Git] Writing file ${fullPath}...`);
       
       // Basic whitelist check based on rules
       const allowedDirs = ["modules", "plugins", "api"];
       const targetDir = f.path.split("/")[0].toLowerCase();
       
       if (!allowedDirs.includes(targetDir) && f.path.includes("/")) {
-        console.warn(\`[Warning] Allowed modification only in /modules, /plugins, /api. Got path: \${f.path}\`);
+        console.warn(`[Warning] Allowed modification only in /modules, /plugins, /api. Got path: ${f.path}`);
       }
 
       fs.mkdirSync(path.dirname(fullPath), { recursive: true });
@@ -53,20 +53,20 @@ module.exports = {
 
   async deleteFile(filePath) {
       const fullPath = path.join(REPO_PATH, filePath);
-      console.log(\`[Git] Deleting file \${fullPath}...\`);
+      console.log(`[Git] Deleting file ${fullPath}...`);
       if (fs.existsSync(fullPath)) {
           fs.unlinkSync(fullPath);
       }
   },
 
   async commit(message) {
-    console.log(\`[Git] Adding & Committing changes: \${message}\`);
+    console.log(`[Git] Adding & Committing changes: ${message}`);
     await git.add(".");
     await git.commit(message);
   },
 
   async push(branch) {
-    console.log(\`[Git] Pushing to origin \${branch}...\`);
+    console.log(`[Git] Pushing to origin ${branch}...`);
     try {
         await git.push("origin", branch, { "--set-upstream": null });
     } catch(e) {
