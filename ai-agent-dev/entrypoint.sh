@@ -3,6 +3,10 @@
 echo "Starting Redis server in the background..."
 redis-server --daemonize yes
 
+echo "Konfigurasi Identitas Git Default..."
+git config --global user.email "${GIT_USER_EMAIL:-ai-agent@mlite.local}"
+git config --global user.name "${GIT_USER_NAME:-AI Agent Worker}"
+
 echo "Ensuring Git Repo exists at $GIT_REPO_PATH..."
 if [ -n "$GITHUB_TOKEN" ]; then
     echo "Menyimpan kredensial GITHUB_TOKEN untuk akses Pull/Push otomatis..."
